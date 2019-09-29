@@ -31,7 +31,7 @@ TBitField::~TBitField()
 {
 	BitLen = 0;
 	MemLen = 0;
-	delete pMem;
+	delete[] pMem;
 	pMem = nullptr;
 }
 
