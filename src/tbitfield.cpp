@@ -29,7 +29,9 @@ TBitField::TBitField(const TBitField &bf) // конструктор копиро
 
 TBitField::~TBitField()
 {
-	delete pMem;
+	BitLen = 0;
+	MemLen = 0;
+	delete[] pMem;
 	pMem = nullptr;
 }
 
@@ -198,16 +200,11 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
+	ostr << bf.BitLen << " ";
+
 	for (int i = 0; i < bf.BitLen; i++)
 	{
-		if (bf.GetBit(i))
-		{
-			ostr << 1;
-		}
-		else
-		{
-			ostr << 0;
-		}
+		ostr << bf.GetBit(i) << " ";
 	}
 	return ostr;
 }
